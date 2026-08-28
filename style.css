@@ -1,0 +1,246 @@
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    min-height:100vh;
+    overflow:hidden;
+    font-family:Arial,sans-serif;
+    color:#4b3740;
+
+    background:
+    radial-gradient(circle at 10% 10%,#fff0a8,transparent 28%),
+    radial-gradient(circle at 90% 10%,#ffc4da,transparent 28%),
+    radial-gradient(circle at 10% 90%,#bdefff,transparent 28%),
+    radial-gradient(circle at 90% 90%,#ffd2ae,transparent 28%),
+    linear-gradient(135deg,#fffaf8,#fff0f6);
+}
+
+.background{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+}
+
+.background span{
+    position:absolute;
+    animation:float 10s linear forwards;
+    opacity:.25;
+}
+
+@keyframes float{
+    from{
+        transform:translateY(110vh);
+    }
+
+    to{
+        transform:translateY(-10vh);
+    }
+}
+
+.slide{
+    display:none;
+    height:100vh;
+    width:100%;
+    align-items:center;
+    justify-content:center;
+    padding:15px;
+}
+
+.slide.active{
+    display:flex;
+    animation:appear .7s ease;
+}
+
+@keyframes appear{
+    from{
+        opacity:0;
+        transform:scale(.9);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+.card{
+    width:94%;
+    max-width:430px;
+    max-height:90vh;
+    overflow:auto;
+
+    padding:30px 22px;
+
+    text-align:center;
+
+    border-radius:35px;
+
+    background:rgba(255,255,255,.92);
+
+    box-shadow:
+    0 25px 70px rgba(90,40,65,.18);
+
+    backdrop-filter:blur(15px);
+}
+
+.card::-webkit-scrollbar{
+    display:none;
+}
+
+.icon{
+    font-size:70px;
+    margin-bottom:15px;
+    animation:floatIcon 2.5s infinite;
+}
+
+@keyframes floatIcon{
+    50%{
+        transform:translateY(-8px);
+    }
+}
+
+.rakhi{
+    font-size:95px;
+    margin-bottom:12px;
+}
+
+h1{
+    color:#91465f;
+    font-size:30px;
+    margin-bottom:17px;
+}
+
+h2{
+    color:#a34d68;
+    font-size:25px;
+    margin-bottom:17px;
+}
+
+p{
+    font-size:16.5px;
+    line-height:1.7;
+}
+
+button{
+    margin-top:24px;
+
+    border:0;
+    border-radius:50px;
+
+    padding:14px 30px;
+
+    color:white;
+
+    background:
+    linear-gradient(135deg,#d77993,#9e4867);
+
+    font-size:16px;
+    font-weight:bold;
+
+    box-shadow:
+    0 9px 25px rgba(145,55,90,.25);
+}
+
+button:active{
+    transform:scale(.94);
+}
+
+small{
+    display:block;
+    margin-top:18px;
+    color:#ad7b89;
+    letter-spacing:2px;
+    font-size:10px;
+}
+
+#secret,
+#name{
+    min-height:65px;
+    margin:20px 0;
+
+    font-family:Georgia,serif;
+
+    font-size:43px;
+    font-weight:bold;
+
+    color:#a44d69;
+}
+
+.date{
+    margin:23px 0;
+
+    font-size:35px;
+    font-weight:bold;
+
+    color:#ad5972;
+}
+
+.letter{
+    text-align:left;
+}
+
+.letter h2{
+    text-align:center;
+}
+
+.love{
+    color:#a04764;
+    font-family:Georgia,serif;
+    font-size:23px;
+    font-weight:bold;
+}
+
+.blessing{
+    background:
+    linear-gradient(
+        145deg,
+        #fff9df,
+        #fff0f6,
+        #edf9ff
+    );
+}
+
+.signature{
+    margin-top:23px;
+
+    color:#965067;
+
+    font-family:Georgia,serif;
+
+    font-size:20px;
+
+    line-height:1.5;
+}
+
+.rakhiText{
+    margin-top:18px;
+
+    color:#a15b70;
+
+    font-weight:bold;
+}
+
+.click-heart{
+    position:fixed;
+
+    left:50%;
+    top:50%;
+
+    transform:
+    translate(-50%,-50%)
+    scale(.5);
+
+    color:#d94b72;
+
+    font-size:40px;
+
+    pointer-events:none;
+
+    z-index:9999;
+
+    transition:
+    all 1.1s ease-out;
+}
