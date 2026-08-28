@@ -3,1330 +3,363 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>A Little Rakhi Surprise</title>
-
-<style>
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-}
-
-body{
-    min-height:100vh;
-    overflow:hidden;
-    font-family:"Trebuchet MS",Arial,sans-serif;
-    color:#493640;
-    background:
-        radial-gradient(circle at 8% 8%,#fff2a6 0,transparent 27%),
-        radial-gradient(circle at 92% 8%,#ffc1d6 0,transparent 28%),
-        radial-gradient(circle at 8% 92%,#bcecff 0,transparent 27%),
-        radial-gradient(circle at 92% 92%,#ffd2ad 0,transparent 28%),
-        linear-gradient(135deg,#fffaf8,#fff1f6);
-}
-
-/* BACKGROUND */
-.bg{
-    position:fixed;
-    inset:0;
-    overflow:hidden;
-    pointer-events:none;
-}
-
-.bg span{
-    position:absolute;
-    opacity:.22;
-    animation:floatUp 11s linear forwards;
-}
-
-@keyframes floatUp{
-    0%{
-        transform:translateY(110vh) rotate(0deg);
-        opacity:0;
-    }
-    15%{
-        opacity:.3;
-    }
-    100%{
-        transform:translateY(-15vh) rotate(180deg);
-        opacity:0;
-    }
-}
-
-/* SLIDES */
-.screen{
-    display:none;
-    width:100%;
-    height:100vh;
-    align-items:center;
-    justify-content:center;
-    padding:15px;
-    position:relative;
-    z-index:5;
-}
-
-.active{
-    display:flex;
-    animation:screenIn .7s cubic-bezier(.2,.8,.2,1);
-}
-
-@keyframes screenIn{
-    from{
-        opacity:0;
-        transform:scale(.90) translateY(20px);
-    }
-    to{
-        opacity:1;
-        transform:scale(1) translateY(0);
-    }
-}
-
-/* CARD */
-.card{
-    width:94%;
-    max-width:440px;
-    max-height:91vh;
-    overflow:auto;
-    padding:31px 23px;
-    text-align:center;
-    border-radius:38px;
-    background:rgba(255,255,255,.91);
-    border:1px solid rgba(170,80,110,.15);
-    box-shadow:
-        0 25px 75px rgba(75,35,55,.17),
-        inset 0 0 45px rgba(255,255,255,.85);
-    backdrop-filter:blur(15px);
-}
-
-.card::-webkit-scrollbar{
-    display:none;
-}
-
-/* TEXT */
-h1{
-    color:#91465f;
-    font-size:31px;
-    line-height:1.3;
-    margin-bottom:16px;
-}
-
-h2{
-    color:#a34d68;
-    font-size:26px;
-    line-height:1.35;
-    margin-bottom:16px;
-}
-
-p{
-    font-size:17px;
-    line-height:1.7;
-}
-
-/* DOTS */
-.dots{
-    display:flex;
-    justify-content:center;
-    gap:7px;
-    margin-bottom:17px;
-}
-
-.dots i{
-    width:7px;
-    height:7px;
-    border-radius:50%;
-    background:#cf718b;
-}
-
-.dots i:nth-child(1){opacity:.3}
-.dots i:nth-child(2){opacity:.6}
-.dots i:nth-child(3){opacity:1}
-
-/* BIG SYMBOL */
-.big{
-    font-size:72px;
-    margin-bottom:15px;
-    animation:gentleFloat 2.7s ease-in-out infinite;
-}
-
-@keyframes gentleFloat{
-    50%{
-        transform:translateY(-8px) scale(1.04);
-    }
-}
-
-/* BUTTON */
-button{
-    border:0;
-    margin-top:24px;
-    padding:14px 30px;
-    border-radius:50px;
-    color:white;
-    background:linear-gradient(135deg,#d77993,#9e4867);
-    font-size:16px;
-    font-weight:bold;
-    box-shadow:0 9px 28px rgba(145,55,90,.25);
-    cursor:pointer;
-    transition:.2s;
-}
-
-button:hover{
-    transform:translateY(-2px) scale(1.03);
-}
-
-button:active{
-    transform:scale(.94);
-}
-
-/* PROGRESS */
-.progress{
-    margin-top:19px;
-    font-size:11px;
-    letter-spacing:2px;
-    color:#ae7a88;
-}
-
-/* SECRET */
-.secret{
-    min-height:70px;
-    margin:22px 0;
-    font-family:Georgia,serif;
-    font-size:48px;
-    font-weight:bold;
-    letter-spacing:4px;
-    color:#a44d69;
-    text-shadow:0 0 22px rgba(180,65,105,.25);
-}
-
-/* DATE */
-.date{
-    margin:23px 0;
-    font-size:37px;
-    font-weight:bold;
-    letter-spacing:3px;
-    color:#ad5972;
-}
-
-/* LETTER */
-.letter{
-    text-align:left;
-    padding:23px;
-    border-radius:26px;
-    background:linear-gradient(145deg,#fffaf0,#fff0f6);
-    border-left:4px solid #ca7088;
-    box-shadow:0 10px 30px rgba(130,55,80,.07);
-}
-
-.letter h2{
-    text-align:center;
-}
-
-.letter p{
-    font-family:Georgia,serif;
-    font-size:16.5px;
-    line-height:1.75;
-}
-
-/* RAKHI */
-.rakhi{
-    font-size:105px;
-    margin-bottom:12px;
-    animation:rakhiGlow 1.8s ease-in-out infinite alternate;
-}
-
-@keyframes rakhiGlow{
-    to{
-        transform:scale(1.08);
-        filter:drop-shadow(0 0 20px rgba(220,170,65,.65));
-    }
-}
-
-/* LOVE */
-.love{
-    display:inline-block;
-    color:#a04764;
-    font-family:Georgia,serif;
-    font-size:23px;
-    font-weight:bold;
-    animation:heartBeat 1.5s infinite;
-}
-
-@keyframes heartBeat{
-    50%{
-        transform:scale(1.06);
-    }
-}
-
-/* BLESSING */
-.blessing{
-    padding:25px 18px;
-    border-radius:28px;
-    background:linear-gradient(145deg,#fff9df,#fff0f6,#edf9ff);
-    border:1px solid #dfc37e;
-    box-shadow:0 12px 35px rgba(150,105,45,.12);
-}
-
-.blessing-symbol{
-    font-size:54px;
-    margin-bottom:13px;
-}
-
-.blessing h2{
-    color:#96603f;
-}
-
-.blessing p{
-    font-family:Georgia,serif;
-    font-size:16.5px;
-    line-height:1.75;
-}
-
-.signature{
-    margin-top:24px;
-    color:#965067;
-    font-family:Georgia,serif;
-    font-size:20px;
-    line-height:1.5;
-}
-
-/* ONLY ONE HEART WHEN CLICKED */
-.click-heart{
-    position:fixed;
-    left:50%;
-    top:50%;
-    transform:translate(-50%,-50%) scale(.5);
-    color:#d94b72;
-    font-size:42px;
-    font-weight:bold;
-    pointer-events:none;
-    z-index:9999;
-    text-shadow:0 0 18px rgba(217,75,114,.45);
-    transition:all 1.15s ease-out;
-}
-
-.dateFlash{
-    animation:dateFlash .45s ease;
-}
-
-@keyframes dateFlash{
-    50%{
-        opacity:.15;
-        transform:scale(1.08);
-    }
-}
-</style>
+<title>For Mounika ❤️</title>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<div class="bg" id="background"></div>
+<div class="background"></div>
 
-
-<!-- =========================
-     SLIDE 1
-========================= -->
-
-<section class="screen active" id="s1">
-
-<div class="card">
-
-<div class="dots">
-<i></i>
-<i></i>
-<i></i>
-</div>
-
-<div class="big">🌙</div>
-
-<h1>A Little Secret...</h1>
-
-<p>
-Something small.<br>
-Something from the heart.<br><br>
-
-You won't know what's coming,
-so don't try to guess.<br><br>
-
-Just enjoy it.
-</p>
-
-<button onclick="go(2)">
-Begin
-</button>
-
-<div class="progress">
-01 / 10
-</div>
-
-</div>
+<!-- SLIDE 1 -->
+<section class="slide active">
+    <div class="card">
+        <div class="icon">🌙</div>
+        <h1>A Little Secret...</h1>
+        <p>
+            Something small.<br>
+            Something from the heart.<br><br>
+            Don't try to guess.<br>
+            Just enjoy the little surprise.
+        </p>
+        <button onclick="nextSlide()">Begin</button>
+        <small>01 / 10</small>
+    </div>
 </section>
 
 
-<!-- =========================
-     SLIDE 2
-========================= -->
-
-<section class="screen" id="s2">
-
-<div class="card">
-
-<div class="big">🎁</div>
-
-<h2>
-Let's Start With A Little Mystery
-</h2>
-
-<p>
-Not every beautiful memory
-announces itself in advance.<br><br>
-
-Sometimes it simply happens.<br><br>
-
-Tap once.
-</p>
-
-<button onclick="randomSurprise()">
-Open
-</button>
-
-<p id="randomText"
-style="
-margin-top:21px;
-color:#a14e68;
-font-weight:bold;
-">
-</p>
-
-<div class="progress">
-02 / 10
-</div>
-
-</div>
+<!-- SLIDE 2 -->
+<section class="slide">
+    <div class="card">
+        <div class="icon">🎁</div>
+        <h2>A Little Mystery</h2>
+        <p>
+            Not every beautiful memory
+            announces itself in advance.
+            <br><br>
+            Sometimes it simply happens.
+        </p>
+        <button onclick="nextSlide()">Open</button>
+        <small>02 / 10</small>
+    </div>
 </section>
 
 
-<!-- =========================
-     SLIDE 3
-========================= -->
+<!-- SLIDE 3 -->
+<section class="slide">
+    <div class="card">
+        <div class="icon">🔮</div>
+        <h2>Something Is Hidden</h2>
 
-<section class="screen" id="s3">
+        <p>
+            Three pieces are waiting...
+            <br><br>
+            Find them.
+        </p>
 
-<div class="card">
+        <div id="secret">???</div>
 
-<div class="big" id="mysteryIcon">
-🔮
-</div>
+        <button onclick="revealDate()">Find A Clue</button>
 
-<h2 id="dateTitle">
-Something Is Hidden
-</h2>
-
-<p id="dateHint">
-Three pieces are waiting.<br><br>
-
-But even I won't tell you
-which one comes first.
-</p>
-
-<div class="secret" id="dateSecret">
-???
-</div>
-
-<button id="dateButton"
-onclick="mysteryDate()">
-Open A Clue
-</button>
-
-<div class="progress">
-03 / 10
-</div>
-
-</div>
+        <small>03 / 10</small>
+    </div>
 </section>
 
 
-<!-- =========================
-     SLIDE 4
-========================= -->
+<!-- SLIDE 4 -->
+<section class="slide">
+    <div class="card">
+        <div class="icon">🌸</div>
 
-<section class="screen" id="s4">
+        <h2>A Date Worth Remembering</h2>
 
-<div class="card">
+        <div class="date">
+            25 • 03 • 2026
+        </div>
 
-<div class="big">🌸</div>
+        <p>
+            A simple date...
+            <br><br>
+            but somehow,
+            it became the beginning
+            of a beautiful memory.
+        </p>
 
-<h2>
-Now You Know The Date
-</h2>
+        <button onclick="nextSlide()">Continue</button>
 
-<div class="date">
-25 • 03 • 2026
-</div>
-
-<p>
-A simple date...<br><br>
-
-but somehow,
-it became the beginning
-of a special memory.<br><br>
-
-Some dates are just dates.<br><br>
-
-Some stay in the heart.
-</p>
-
-<button onclick="go(5)">
-Continue
-</button>
-
-<div class="progress">
-04 / 10
-</div>
-
-</div>
+        <small>04 / 10</small>
+    </div>
 </section>
 
 
-<!-- =========================
-     SLIDE 5
-========================= -->
+<!-- SLIDE 5 -->
+<section class="slide">
+    <div class="card">
 
-<section class="screen" id="s5">
+        <div class="icon">🗝️</div>
 
-<div class="card">
+        <h2>
+            Maybe The Date Wasn't
+            The Real Surprise
+        </h2>
 
-<div class="big">🗝️</div>
+        <p>
+            The date only tells us
+            where the story began.
+            <br><br>
+            The real surprise is
+            the person connected to it.
+        </p>
 
-<h2>
-Maybe The Date Wasn't The Real Surprise
-</h2>
+        <button onclick="nextSlide()">Unlock</button>
 
-<p>
-The date only reminds us
-where the story began.<br><br>
-
-The real beauty is in the person
-who became part of that memory.<br><br>
-
-One final little secret is waiting.
-</p>
-
-<button onclick="go(6)">
-Unlock
-</button>
-
-<div class="progress">
-05 / 10
-</div>
-
-</div>
+        <small>05 / 10</small>
+    </div>
 </section>
 
 
-<!-- =========================
-     SLIDE 6
-========================= -->
+<!-- SLIDE 6 -->
+<section class="slide">
+    <div class="card">
 
-<section class="screen" id="s6">
+        <div class="icon">🌌</div>
 
-<div class="card">
+        <h2>One Name Is Hidden</h2>
 
-<div class="big">🌌</div>
+        <p>
+            Don't guess.
+            <br><br>
+            Let the name reveal itself.
+        </p>
 
-<p>
-There is one name hidden
-behind all this.<br><br>
+        <div id="name">
+            ???
+        </div>
 
-Don't guess.<br><br>
+        <button onclick="revealName()">Reveal</button>
 
-Let it find its way to you.
-</p>
-
-<div class="secret" id="name">
-???
-</div>
-
-<button onclick="revealName()">
-Reveal
-</button>
-
-<div class="progress">
-06 / 10
-</div>
-
-</div>
+        <small>06 / 10</small>
+    </div>
 </section>
 
 
-<!-- =========================
-     SLIDE 7
-========================= -->
+<!-- SLIDE 7 -->
+<section class="slide">
+    <div class="card">
 
-<section class="screen" id="s7">
+        <div class="rakhi">🪢</div>
 
-<div class="card">
+        <h1>Happy Raksha Bandhan</h1>
 
-<div class="rakhi">
-🪢
-</div>
+        <p>
+            Some bonds aren't made by blood.
+            <br><br>
 
-<h1>
-Happy Raksha Bandhan
-</h1>
+            They are made by
+            <b>
+            trust, understanding,
+            care and memories.
+            </b>
 
-<p>
+            <br><br>
 
-Some bonds are not created by blood.
+            We may not share the same
+            family or the same beginning...
+            <br><br>
 
-<br><br>
+            but sometimes someone
+            enters your life unexpectedly
+            and becomes more special
+            than you ever expected.
+            <br><br>
 
-They are created by
-<strong>
-time, trust, understanding,
-care and the little memories
-two people share.
-</strong>
+            Some bonds are simply
+            worth keeping close. 🤍
+        </p>
 
-<br><br>
+        <button onclick="nextSlide()">
+            A Little More
+        </button>
 
-We may not have the same blood,
-the same family,
-or the same beginning...
-
-<br><br>
-
-but that doesn't make a bond
-any less real.
-
-<br><br>
-
-Because sometimes,
-someone can enter your life
-unexpectedly
-
-<br>
-
-and slowly become
-<strong>
-more than you ever expected.
-</strong>
-
-<br><br>
-
-That's the kind of bond
-worth keeping close. 🤍
-
-</p>
-
-<button onclick="go(8)">
-A Little More
-</button>
-
-<div class="progress">
-07 / 10
-</div>
-
-</div>
+        <small>07 / 10</small>
+    </div>
 </section>
 
 
-<!-- =========================
-     SLIDE 8
-========================= -->
+<!-- SLIDE 8 -->
+<section class="slide">
+    <div class="card">
 
-<section class="screen" id="s8">
+        <div class="icon">📚</div>
 
-<div class="card">
+        <h2>
+            For The Dream You're Chasing
+        </h2>
 
-<div class="big">📚</div>
+        <p>
+            I know you're working hard
+            for your government exams.
+            <br><br>
 
-<h2>
-For The Dream You're Chasing
-</h2>
+            Some days may feel tiring.
+            Some chapters may feel endless.
+            <br><br>
 
-<p>
+            But don't give up.
+            <br><br>
 
-I know you're working hard
-for your government exams.
+            Study at your pace.
+            Take a breath when you need one.
+            Then start again.
+            <br><br>
 
-<br><br>
+            One day,
+            your hard work will become
+            something you'll be proud of.
+            <br><br>
 
-There may be days when
-the syllabus feels endless,
-the preparation feels tiring,
-and the result feels far away.
+            <b>
+            Keep going. Your dream is worth it. 🌟
+            </b>
+        </p>
 
-<br><br>
+        <button onclick="nextSlide()">
+            One Last Thing
+        </button>
 
-But please don't forget
-how much your effort means.
-
-<br><br>
-
-Study at your pace.
-
-<br><br>
-
-Take a breath when you need one.
-
-<br><br>
-
-Then start again.
-
-<br><br>
-
-One day, all those quiet hours,
-all those difficult chapters,
-and all that patience
-
-<br>
-
-will become a moment
-you'll be proud of.
-
-<br><br>
-
-<strong>
-Don't give up on the future
-you're working so hard to build.
-</strong>
-
-</p>
-
-<button onclick="go(9)">
-One Last Thing
-</button>
-
-<div class="progress">
-08 / 10
-</div>
-
-</div>
+        <small>08 / 10</small>
+    </div>
 </section>
 
 
-<!-- =========================
-     SLIDE 9
-========================= -->
+<!-- SLIDE 9 -->
+<section class="slide">
+    <div class="card letter">
 
-<section class="screen" id="s9">
+        <h2>One Little Thought</h2>
 
-<div class="card">
+        <p>
+            25 March 2026...
+            <br><br>
 
-<div class="letter">
+            Who would have thought
+            that a simple beginning
+            could become such a meaningful memory?
+            <br><br>
 
-<h2>
-One Little Thought
-</h2>
+            Not every special relationship
+            comes from the same family.
+            <br><br>
 
-<p>
+            Sometimes life simply puts
+            two people in each other's path.
+            <br><br>
 
-25 March 2026...
+            Conversations become memories.
+            <br><br>
 
-<br><br>
+            Memories become trust.
+            <br><br>
 
-Who would have thought that
-a simple beginning could leave
-such a meaningful memory?
+            And trust becomes something
+            you quietly don't want to lose.
+            <br><br>
 
-<br><br>
+            Family isn't always about blood.
+            <br><br>
 
-Not every special relationship
-comes from the same family.
+            Sometimes it is about
+            understanding, caring,
+            supporting and genuinely
+            wishing happiness for someone.
+            <br><br>
 
-<br><br>
+            Whatever the future brings,
+            I hope the good memories
+            always stay good memories.
+            <br><br>
 
-Sometimes life simply puts
-two people in each other's path.
+            <span class="love">
+                Love you ❤️
+            </span>
+        </p>
 
-<br><br>
+        <button onclick="nextSlide()">
+            Final Blessing
+        </button>
 
-Then conversations become memories.
-
-<br><br>
-
-Memories become trust.
-
-<br><br>
-
-And trust becomes something
-you quietly don't want to lose.
-
-<br><br>
-
-That's why I believe
-<strong>
-family isn't always about blood.
-</strong>
-
-<br><br>
-
-Sometimes family is the person
-who understands your silence,
-respects your feelings,
-supports your dreams,
-and genuinely wants to see
-you happy.
-
-<br><br>
-
-No matter where life takes us,
-I hope the good memories
-always remain good memories.
-
-<br><br>
-
-And I hope you always remember
-that someone is sincerely
-wishing for your happiness,
-peace and success.
-
-<br><br>
-
-<span class="love">
-Love you ❤️🫂
-</span>
-
-</p>
-
-</div>
-
-<button onclick="go(10)">
-Final Blessing
-</button>
-
-<div class="progress">
-09 / 10
-</div>
-
-</div>
+        <small>09 / 10</small>
+    </div>
 </section>
 
 
-<!-- =========================
-     SLIDE 10
-========================= -->
+<!-- SLIDE 10 -->
+<section class="slide">
+    <div class="card blessing">
 
-<section class="screen" id="s10">
+        <div class="icon">
+            🌸
+        </div>
 
-<div class="card">
+        <h2>
+            A Little Rakhi Blessing
+        </h2>
 
-<div class="blessing">
+        <p>
+            May you always have
+            the courage to dream.
+            <br><br>
 
-<div class="blessing-symbol">
-🌸🪢🌸
-</div>
+            May your mind stay peaceful
+            when life becomes difficult.
+            <br><br>
 
-<h2>
-A Little Rakhi Blessing
-</h2>
+            May your hard work bring
+            the success you are waiting for.
+            <br><br>
 
-<p>
+            May every exam make you stronger.
+            <br><br>
 
-May your heart always
-have the courage to dream.
+            May the dream you're working for
+            become a beautiful reality.
+            <br><br>
 
-<br><br>
+            May you never lose hope
+            on difficult days.
+            <br><br>
 
-May your mind stay peaceful
-when life becomes difficult.
+            And may life always give you
+            reasons to smile.
+            <br><br>
 
-<br><br>
+            Some bonds begin unexpectedly.
+            <br><br>
 
-May your hard work bring
-the success you are waiting for.
+            Some become special quietly.
+            <br><br>
 
-<br><br>
+            And some are simply
+            worth protecting.
+        </p>
 
-May every exam you face
-make you stronger.
+        <div class="signature">
+            With love & good wishes,
+            <br><br>
+            <b>Chandu</b>
+        </div>
 
-<br><br>
+        <p class="rakhiText">
+            Happy Raksha Bandhan 🌸
+        </p>
 
-May the dream you're studying
-for become a beautiful reality.
+        <small>10 / 10</small>
 
-<br><br>
-
-May you have the strength
-to keep going on the days
-when motivation disappears.
-
-<br><br>
-
-May happiness find you
-in unexpected places.
-
-<br><br>
-
-And may the people who truly
-care about you always remain
-a beautiful part of your journey.
-
-<br><br>
-
-Some bonds begin unexpectedly.
-
-<br><br>
-
-Some become special quietly.
-
-<br><br>
-
-And some are simply
-worth protecting.
-
-<br><br>
-
-🌸 🪢 ❤️ 🪢 🌸
-
-</p>
-
-</div>
-
-<div class="signature">
-
-With love & good wishes,
-
-<br><br>
-
-<b>Chandu</b>
-
-</div>
-
-<p style="
-margin-top:18px;
-color:#a15b70;
-font-weight:bold;
-">
-
-Happy Raksha Bandhan 🌸
-
-</p>
-
-</div>
+    </div>
 </section>
 
 
-<script>
-
-/* =========================
-   CHANGE SLIDE
-========================= */
-
-function go(n){
-
-    document
-    .querySelectorAll(".screen")
-    .forEach(function(screen){
-
-        screen.classList.remove("active");
-
-    });
-
-    document
-    .getElementById("s"+n)
-    .classList.add("active");
-
-    heartClick();
-}
-
-
-/* =========================
-   ONE HEART ON CLICK
-========================= */
-
-function heartClick(){
-
-    var heart =
-    document.createElement("div");
-
-    heart.className =
-    "click-heart";
-
-    heart.innerHTML =
-    "♥";
-
-    document.body.appendChild(heart);
-
-    requestAnimationFrame(function(){
-
-        heart.style.opacity = "0";
-
-        heart.style.transform =
-        "translate(-50%,-125px) scale(1.2)";
-
-    });
-
-    setTimeout(function(){
-
-        heart.remove();
-
-    },1200);
-}
-
-
-/* =========================
-   RANDOM SURPRISE
-========================= */
-
-function randomSurprise(){
-
-    var messages = [
-
-        "Maybe you're getting closer...",
-
-        "Not everything reveals itself immediately.",
-
-        "Something from the past is waiting.",
-
-        "There is a memory hidden ahead.",
-
-        "Don't guess yet.",
-
-        "Just keep going..."
-
-    ];
-
-    var random =
-    Math.floor(
-        Math.random()*messages.length
-    );
-
-    document
-    .getElementById("randomText")
-    .innerText =
-    messages[random];
-
-    heartClick();
-
-    setTimeout(function(){
-
-        go(3);
-
-    },1300);
-}
-
-
-/* =========================
-   DATE MYSTERY
-========================= */
-
-var dateStage = 0;
-
-var dateParts = [];
-
-
-function mysteryDate(){
-
-    var box =
-    document.getElementById(
-        "dateSecret"
-    );
-
-    var title =
-    document.getElementById(
-        "dateTitle"
-    );
-
-    var hint =
-    document.getElementById(
-        "dateHint"
-    );
-
-    var button =
-    document.getElementById(
-        "dateButton"
-    );
-
-    var icon =
-    document.getElementById(
-        "mysteryIcon"
-    );
-
-
-    /* FIRST CLICK */
-
-    if(dateStage === 0){
-
-        box.innerText =
-        "Maybe...";
-
-        title.innerText =
-        "A Clue Appeared";
-
-        hint.innerText =
-        "But that isn't the answer.";
-
-        icon.innerText =
-        "🔐";
-
-        button.innerText =
-        "Try Again";
-
-        dateStage++;
-
-        heartClick();
-
-        return;
-    }
-
-
-    /* DATE PIECES */
-
-    if(dateParts.length < 3){
-
-        var pieces = [
-            "25",
-            "03",
-            "2026"
-        ];
-
-        var remaining =
-        pieces.filter(function(x){
-
-            return !dateParts.includes(x);
-
-        });
-
-        var selected =
-        remaining[
-            Math.floor(
-                Math.random() *
-                remaining.length
-            )
-        ];
-
-        dateParts.push(selected);
-
-        box.innerText =
-        selected;
-
-        box.classList.remove(
-            "dateFlash"
-        );
-
-        void box.offsetWidth;
-
-        box.classList.add(
-            "dateFlash"
-        );
-
-        title.innerText =
-        "Another Piece...";
-
-        hint.innerText =
-        "Still not the complete answer.";
-
-        icon.innerText =
-        "🔮";
-
-        if(dateParts.length === 3){
-
-            button.innerText =
-            "Reveal The Date";
-
-        }else{
-
-            button.innerText =
-            "Find Another Piece";
-
-        }
-
-        dateStage++;
-
-        heartClick();
-
-        return;
-    }
-
-
-    /* FINAL DATE */
-
-    box.innerText =
-    "25 • 03 • 2026";
-
-    title.innerText =
-    "There It Is";
-
-    hint.innerText =
-    "25 March 2026";
-
-    icon.innerText =
-    "🌸";
-
-    button.innerText =
-    "See What It Means";
-
-    button.onclick =
-    function(){
-
-        go(4);
-
-    };
-
-    heartClick();
-}
-
-
-/* =========================
-   NAME REVEAL
-========================= */
-
-function revealName(){
-
-    var box =
-    document.getElementById(
-        "name"
-    );
-
-    var characters = [
-        "?",
-        "•",
-        "X",
-        "7",
-        "M",
-        "N",
-        "♥"
-    ];
-
-    var count = 0;
-
-    var timer =
-    setInterval(function(){
-
-        var text = "";
-
-        for(
-            var i=0;
-            i<Math.min(count,7);
-            i++
-        ){
-
-            text +=
-            characters[
-                Math.floor(
-                    Math.random() *
-                    characters.length
-                )
-            ];
-
-        }
-
-        box.innerText =
-        text || "???";
-
-        count++;
-
-        if(count > 15){
-
-            clearInterval(timer);
-
-            box.innerText =
-            "MOUNIKA";
-
-            heartClick();
-
-            setTimeout(function(){
-
-                go(7);
-
-            },1400);
-
-        }
-
-    },130);
-}
-
-
-/* =========================
-   BACKGROUND
-========================= */
-
-function createBackground(){
-
-    var item =
-    document.createElement("span");
-
-    var symbols = [
-        "•",
-        "·",
-        "✦"
-    ];
-
-    item.innerText =
-    symbols[
-        Math.floor(
-            Math.random() *
-            symbols.length
-        )
-    ];
-
-    item.style.left =
-    Math.random()*100+"vw";
-
-    item.style.fontSize =
-    (10+Math.random()*14)+"px";
-
-    item.style.animationDuration =
-    (8+Math.random()*5)+"s";
-
-    document
-    .getElementById("background")
-    .appendChild(item);
-
-    setTimeout(function(){
-
-        item.remove();
-
-    },13000);
-}
-
-setInterval(
-    createBackground,
-    900
-);
-
-
-/* =========================
-   SMALL DATE EFFECT
-========================= */
-
-setInterval(function(){
-
-    var screen =
-    document.getElementById("s3");
-
-    if(
-        screen.classList.contains("active") &&
-        dateStage > 0 &&
-        Math.random() > .75
-    ){
-
-        var box =
-        document.getElementById(
-            "dateSecret"
-        );
-
-        var old =
-        box.innerText;
-
-        box.style.opacity =
-        ".25";
-
-        setTimeout(function(){
-
-            box.innerText =
-            old;
-
-            box.style.opacity =
-            "1";
-
-        },180);
-    }
-
-},1000);
-
-</script>
+<script src="script.js"></script>
 
 </body>
-    </html>
+</html>
