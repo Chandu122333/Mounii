@@ -2,12 +2,10 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>A Little Rakhi Surprise</title>
 
 <style>
-
 *{
     box-sizing:border-box;
     margin:0;
@@ -17,27 +15,17 @@
 body{
     min-height:100vh;
     overflow:hidden;
-
-    font-family:
-    "Trebuchet MS",
-    Arial,
-    sans-serif;
-
+    font-family:"Trebuchet MS",Arial,sans-serif;
     color:#493640;
-
     background:
-    radial-gradient(circle at 8% 8%,#fff2a6 0,transparent 27%),
-    radial-gradient(circle at 92% 8%,#ffc1d6 0,transparent 28%),
-    radial-gradient(circle at 8% 92%,#bcecff 0,transparent 27%),
-    radial-gradient(circle at 92% 92%,#ffd2ad 0,transparent 28%),
-    linear-gradient(135deg,#fffaf8,#fff1f6);
+        radial-gradient(circle at 8% 8%,#fff2a6 0,transparent 27%),
+        radial-gradient(circle at 92% 8%,#ffc1d6 0,transparent 28%),
+        radial-gradient(circle at 8% 92%,#bcecff 0,transparent 27%),
+        radial-gradient(circle at 92% 92%,#ffd2ad 0,transparent 28%),
+        linear-gradient(135deg,#fffaf8,#fff1f6);
 }
 
-
-/* =====================================
-   SOFT BACKGROUND
-===================================== */
-
+/* BACKGROUND */
 .bg{
     position:fixed;
     inset:0;
@@ -47,115 +35,66 @@ body{
 
 .bg span{
     position:absolute;
-    opacity:.25;
+    opacity:.22;
     animation:floatUp 11s linear forwards;
 }
 
 @keyframes floatUp{
-
     0%{
-        transform:
-        translateY(110vh)
-        rotate(0deg);
-
+        transform:translateY(110vh) rotate(0deg);
         opacity:0;
     }
-
     15%{
         opacity:.3;
     }
-
     100%{
-        transform:
-        translateY(-15vh)
-        rotate(180deg);
-
+        transform:translateY(-15vh) rotate(180deg);
         opacity:0;
     }
 }
 
-
-/* =====================================
-   SCREEN
-===================================== */
-
+/* SLIDES */
 .screen{
     display:none;
-
     width:100%;
     height:100vh;
-
     align-items:center;
     justify-content:center;
-
     padding:15px;
-
     position:relative;
     z-index:5;
 }
 
 .active{
     display:flex;
-
-    animation:
-    screenIn
-    .7s
-    cubic-bezier(.2,.8,.2,1);
+    animation:screenIn .7s cubic-bezier(.2,.8,.2,1);
 }
 
 @keyframes screenIn{
-
     from{
         opacity:0;
-        transform:
-        scale(.90)
-        translateY(20px);
+        transform:scale(.90) translateY(20px);
     }
-
     to{
         opacity:1;
-        transform:
-        scale(1)
-        translateY(0);
+        transform:scale(1) translateY(0);
     }
 }
 
-
-/* =====================================
-   CARD
-===================================== */
-
+/* CARD */
 .card{
-
     width:94%;
     max-width:440px;
-
     max-height:91vh;
-
     overflow:auto;
-
     padding:31px 23px;
-
     text-align:center;
-
     border-radius:38px;
-
-    background:
-    rgba(255,255,255,.91);
-
-    border:
-    1px solid
-    rgba(170,80,110,.15);
-
+    background:rgba(255,255,255,.91);
+    border:1px solid rgba(170,80,110,.15);
     box-shadow:
-
-    0 25px 75px
-    rgba(75,35,55,.17),
-
-    inset
-    0 0 45px
-    rgba(255,255,255,.85);
-
+        0 25px 75px rgba(75,35,55,.17),
+        inset 0 0 45px rgba(255,255,255,.85);
     backdrop-filter:blur(15px);
 }
 
@@ -163,453 +102,228 @@ body{
     display:none;
 }
 
-
-/* =====================================
-   TEXT
-===================================== */
-
+/* TEXT */
 h1{
-
     color:#91465f;
-
     font-size:31px;
-
     line-height:1.3;
-
     margin-bottom:16px;
 }
 
 h2{
-
     color:#a34d68;
-
     font-size:26px;
-
     line-height:1.35;
-
     margin-bottom:16px;
 }
 
 p{
-
     font-size:17px;
-
     line-height:1.7;
 }
 
-
-/* =====================================
-   SMALL TOP DOTS
-===================================== */
-
+/* DOTS */
 .dots{
-
     display:flex;
-
     justify-content:center;
-
     gap:7px;
-
     margin-bottom:17px;
 }
 
 .dots i{
-
     width:7px;
     height:7px;
-
     border-radius:50%;
-
     background:#cf718b;
 }
 
-.dots i:nth-child(1){
-    opacity:.3;
-}
+.dots i:nth-child(1){opacity:.3}
+.dots i:nth-child(2){opacity:.6}
+.dots i:nth-child(3){opacity:1}
 
-.dots i:nth-child(2){
-    opacity:.6;
-}
-
-.dots i:nth-child(3){
-    opacity:1;
-}
-
-
-/* =====================================
-   BIG SYMBOL
-===================================== */
-
+/* BIG SYMBOL */
 .big{
-
     font-size:72px;
-
     margin-bottom:15px;
-
-    animation:
-    gentleFloat
-    2.7s
-    ease-in-out
-    infinite;
+    animation:gentleFloat 2.7s ease-in-out infinite;
 }
 
 @keyframes gentleFloat{
-
     50%{
-        transform:
-        translateY(-8px)
-        scale(1.04);
+        transform:translateY(-8px) scale(1.04);
     }
 }
 
-
-/* =====================================
-   BUTTON
-===================================== */
-
+/* BUTTON */
 button{
-
     border:0;
-
     margin-top:24px;
-
-    padding:
-    14px 30px;
-
+    padding:14px 30px;
     border-radius:50px;
-
     color:white;
-
-    background:
-    linear-gradient(
-        135deg,
-        #d77993,
-        #9e4867
-    );
-
+    background:linear-gradient(135deg,#d77993,#9e4867);
     font-size:16px;
-
     font-weight:bold;
-
-    box-shadow:
-    0 9px 28px
-    rgba(145,55,90,.25);
-
+    box-shadow:0 9px 28px rgba(145,55,90,.25);
     cursor:pointer;
-
     transition:.2s;
 }
 
 button:hover{
-
-    transform:
-    translateY(-2px)
-    scale(1.03);
+    transform:translateY(-2px) scale(1.03);
 }
 
 button:active{
-
     transform:scale(.94);
 }
 
-
-/* =====================================
-   PROGRESS
-===================================== */
-
+/* PROGRESS */
 .progress{
-
     margin-top:19px;
-
     font-size:11px;
-
     letter-spacing:2px;
-
     color:#ae7a88;
 }
 
-
-/* =====================================
-   SECRET
-===================================== */
-
+/* SECRET */
 .secret{
-
     min-height:70px;
-
     margin:22px 0;
-
     font-family:Georgia,serif;
-
     font-size:48px;
-
     font-weight:bold;
-
     letter-spacing:4px;
-
     color:#a44d69;
-
-    text-shadow:
-    0 0 22px
-    rgba(180,65,105,.25);
+    text-shadow:0 0 22px rgba(180,65,105,.25);
 }
 
-
-/* =====================================
-   DATE
-===================================== */
-
+/* DATE */
 .date{
-
     margin:23px 0;
-
     font-size:37px;
-
     font-weight:bold;
-
     letter-spacing:3px;
-
     color:#ad5972;
 }
 
-
-/* =====================================
-   LETTER
-===================================== */
-
+/* LETTER */
 .letter{
-
     text-align:left;
-
     padding:23px;
-
     border-radius:26px;
-
-    background:
-    linear-gradient(
-        145deg,
-        #fffaf0,
-        #fff0f6
-    );
-
-    border-left:
-    4px solid
-    #ca7088;
-
-    box-shadow:
-    0 10px 30px
-    rgba(130,55,80,.07);
+    background:linear-gradient(145deg,#fffaf0,#fff0f6);
+    border-left:4px solid #ca7088;
+    box-shadow:0 10px 30px rgba(130,55,80,.07);
 }
 
 .letter h2{
-
     text-align:center;
 }
 
 .letter p{
-
-    font-family:
-    Georgia,
-    serif;
-
+    font-family:Georgia,serif;
     font-size:16.5px;
-
     line-height:1.75;
 }
 
-
-/* =====================================
-   RAKHI
-===================================== */
-
+/* RAKHI */
 .rakhi{
-
     font-size:105px;
-
     margin-bottom:12px;
-
-    animation:
-    rakhiGlow
-    1.8s
-    ease-in-out
-    infinite alternate;
+    animation:rakhiGlow 1.8s ease-in-out infinite alternate;
 }
 
 @keyframes rakhiGlow{
-
     to{
-
-        transform:
-        scale(1.08);
-
-        filter:
-        drop-shadow(
-        0 0 20px
-        rgba(220,170,65,.65));
+        transform:scale(1.08);
+        filter:drop-shadow(0 0 20px rgba(220,170,65,.65));
     }
 }
 
-
-/* =====================================
-   LOVE
-===================================== */
-
+/* LOVE */
 .love{
-
     display:inline-block;
-
     color:#a04764;
-
     font-family:Georgia,serif;
-
     font-size:23px;
-
     font-weight:bold;
-
-    animation:
-    heartBeat
-    1.5s
-    infinite;
+    animation:heartBeat 1.5s infinite;
 }
 
 @keyframes heartBeat{
-
     50%{
         transform:scale(1.06);
     }
 }
 
-
-/* =====================================
-   FINAL BLESSING
-===================================== */
-
+/* BLESSING */
 .blessing{
-
     padding:25px 18px;
-
     border-radius:28px;
-
-    background:
-    linear-gradient(
-        145deg,
-        #fff9df,
-        #fff0f6,
-        #edf9ff
-    );
-
-    border:
-    1px solid
-    #dfc37e;
-
-    box-shadow:
-    0 12px 35px
-    rgba(150,105,45,.12);
+    background:linear-gradient(145deg,#fff9df,#fff0f6,#edf9ff);
+    border:1px solid #dfc37e;
+    box-shadow:0 12px 35px rgba(150,105,45,.12);
 }
 
 .blessing-symbol{
-
     font-size:54px;
-
     margin-bottom:13px;
 }
 
 .blessing h2{
-
     color:#96603f;
 }
 
 .blessing p{
-
     font-family:Georgia,serif;
-
     font-size:16.5px;
-
     line-height:1.75;
 }
 
 .signature{
-
     margin-top:24px;
-
     color:#965067;
-
     font-family:Georgia,serif;
-
     font-size:20px;
-
     line-height:1.5;
 }
 
-
-/* =====================================
-   SINGLE HEART CLICK EFFECT
-===================================== */
-
+/* ONLY ONE HEART WHEN CLICKED */
 .click-heart{
-
     position:fixed;
-
     left:50%;
     top:50%;
-
-    transform:
-    translate(-50%,-50%)
-    scale(.5);
-
+    transform:translate(-50%,-50%) scale(.5);
     color:#d94b72;
-
     font-size:42px;
-
     font-weight:bold;
-
     pointer-events:none;
-
     z-index:9999;
-
-    text-shadow:
-    0 0 18px
-    rgba(217,75,114,.45);
-
-    transition:
-    all 1.15s
-    ease-out;
+    text-shadow:0 0 18px rgba(217,75,114,.45);
+    transition:all 1.15s ease-out;
 }
 
-
-/* =====================================
-   DATE FLASH
-===================================== */
-
 .dateFlash{
-
-    animation:
-    dateFlash
-    .45s
-    ease;
+    animation:dateFlash .45s ease;
 }
 
 @keyframes dateFlash{
-
     50%{
         opacity:.15;
         transform:scale(1.08);
     }
 }
-
 </style>
 </head>
 
-
 <body>
-
 
 <div class="bg" id="background"></div>
 
 
-<!-- =================================================
-     1 — START
-================================================= -->
+<!-- =========================
+     SLIDE 1
+========================= -->
 
 <section class="screen active" id="s1">
 
@@ -621,31 +335,18 @@ button:active{
 <i></i>
 </div>
 
-<div class="big">
-🌙
-</div>
+<div class="big">🌙</div>
 
-<h1>
-A Little Secret...
-</h1>
+<h1>A Little Secret...</h1>
 
 <p>
-
-Something small.
-
-<br>
-
-Something from the heart.
-
-<br><br>
+Something small.<br>
+Something from the heart.<br><br>
 
 You won't know what's coming,
-so don't try to guess.
-
-<br><br>
+so don't try to guess.<br><br>
 
 Just enjoy it.
-
 </p>
 
 <button onclick="go(2)">
@@ -657,47 +358,37 @@ Begin
 </div>
 
 </div>
-
 </section>
 
 
-<!-- =================================================
-     2 — FIRST SURPRISE
-================================================= -->
+<!-- =========================
+     SLIDE 2
+========================= -->
 
 <section class="screen" id="s2">
 
 <div class="card">
 
-<div class="big">
-🎁
-</div>
+<div class="big">🎁</div>
 
 <h2>
 Let's Start With A Little Mystery
 </h2>
 
 <p>
-
 Not every beautiful memory
-announces itself in advance.
+announces itself in advance.<br><br>
 
-<br><br>
-
-Sometimes it simply happens.
-
-<br><br>
+Sometimes it simply happens.<br><br>
 
 Tap once.
-
 </p>
 
 <button onclick="randomSurprise()">
 Open
 </button>
 
-<p
-id="randomText"
+<p id="randomText"
 style="
 margin-top:21px;
 color:#a14e68;
@@ -710,13 +401,12 @@ font-weight:bold;
 </div>
 
 </div>
-
 </section>
 
 
-<!-- =================================================
-     3 — DATE MYSTERY
-================================================= -->
+<!-- =========================
+     SLIDE 3
+========================= -->
 
 <section class="screen" id="s3">
 
@@ -731,24 +421,17 @@ Something Is Hidden
 </h2>
 
 <p id="dateHint">
-
-Three pieces are waiting.
-
-<br><br>
+Three pieces are waiting.<br><br>
 
 But even I won't tell you
 which one comes first.
-
 </p>
 
-<div
-class="secret"
-id="dateSecret">
+<div class="secret" id="dateSecret">
 ???
 </div>
 
-<button
-id="dateButton"
+<button id="dateButton"
 onclick="mysteryDate()">
 Open A Clue
 </button>
@@ -758,21 +441,18 @@ Open A Clue
 </div>
 
 </div>
-
 </section>
 
 
-<!-- =================================================
-     4 — DATE REVEAL
-================================================= -->
+<!-- =========================
+     SLIDE 4
+========================= -->
 
 <section class="screen" id="s4">
 
 <div class="card">
 
-<div class="big">
-🌸
-</div>
+<div class="big">🌸</div>
 
 <h2>
 Now You Know The Date
@@ -783,23 +463,15 @@ Now You Know The Date
 </div>
 
 <p>
-
-A simple date...
-
-<br><br>
+A simple date...<br><br>
 
 but somehow,
 it became the beginning
-of a special memory.
+of a special memory.<br><br>
 
-<br><br>
-
-Some dates are just dates.
-
-<br>
+Some dates are just dates.<br><br>
 
 Some stay in the heart.
-
 </p>
 
 <button onclick="go(5)">
@@ -811,42 +483,31 @@ Continue
 </div>
 
 </div>
-
 </section>
 
 
-<!-- =================================================
-     5 — MEANING
-================================================= -->
+<!-- =========================
+     SLIDE 5
+========================= -->
 
 <section class="screen" id="s5">
 
 <div class="card">
 
-<div class="big">
-🗝️
-</div>
+<div class="big">🗝️</div>
 
 <h2>
 Maybe The Date Wasn't The Real Surprise
 </h2>
 
 <p>
-
 The date only reminds us
-where the story began.
+where the story began.<br><br>
 
-<br><br>
+The real beauty is in the person
+who became part of that memory.<br><br>
 
-The real beauty is in
-the person who became
-part of that memory.
-
-<br><br>
-
-One final little secret
-is waiting.
-
+One final little secret is waiting.
 </p>
 
 <button onclick="go(6)">
@@ -858,40 +519,29 @@ Unlock
 </div>
 
 </div>
-
 </section>
 
 
-<!-- =================================================
-     6 — NAME REVEAL
-================================================= -->
+<!-- =========================
+     SLIDE 6
+========================= -->
 
 <section class="screen" id="s6">
 
 <div class="card">
 
-<div class="big">
-🌌
-</div>
+<div class="big">🌌</div>
 
 <p>
+There is one name hidden
+behind all this.<br><br>
 
-There is one name
-hidden behind all this.
-
-<br><br>
-
-Don't guess.
-
-<br><br>
+Don't guess.<br><br>
 
 Let it find its way to you.
-
 </p>
 
-<div
-class="secret"
-id="name">
+<div class="secret" id="name">
 ???
 </div>
 
@@ -904,13 +554,12 @@ Reveal
 </div>
 
 </div>
-
 </section>
 
 
-<!-- =================================================
-     7 — RAKHI + NOT BLOOD
-================================================= -->
+<!-- =========================
+     SLIDE 7
+========================= -->
 
 <section class="screen" id="s7">
 
@@ -931,9 +580,11 @@ Some bonds are not created by blood.
 <br><br>
 
 They are created by
-<strong>time, trust, understanding,
+<strong>
+time, trust, understanding,
 care and the little memories
-two people share.</strong>
+two people share.
+</strong>
 
 <br><br>
 
@@ -955,7 +606,9 @@ unexpectedly
 <br>
 
 and slowly become
-<strong>more than you ever expected.</strong>
+<strong>
+more than you ever expected.
+</strong>
 
 <br><br>
 
@@ -973,21 +626,18 @@ A Little More
 </div>
 
 </div>
-
 </section>
 
 
-<!-- =================================================
-     8 — EXAM SUPPORT
-================================================= -->
+<!-- =========================
+     SLIDE 8
+========================= -->
 
 <section class="screen" id="s8">
 
 <div class="card">
 
-<div class="big">
-📚
-</div>
+<div class="big">📚</div>
 
 <h2>
 For The Dream You're Chasing
@@ -1014,18 +664,17 @@ how much your effort means.
 
 Study at your pace.
 
-<br>
+<br><br>
 
 Take a breath when you need one.
 
-<br>
+<br><br>
 
 Then start again.
 
 <br><br>
 
-One day,
-all those quiet hours,
+One day, all those quiet hours,
 all those difficult chapters,
 and all that patience
 
@@ -1038,7 +687,7 @@ you'll be proud of.
 
 <strong>
 Don't give up on the future
-you're working so hard to build. 🌟
+you're working so hard to build.
 </strong>
 
 </p>
@@ -1052,13 +701,12 @@ One Last Thing
 </div>
 
 </div>
-
 </section>
 
 
-<!-- =================================================
-     9 — DEEPEST EMOTIONAL MESSAGE
-================================================= -->
+<!-- =========================
+     SLIDE 9
+========================= -->
 
 <section class="screen" id="s9">
 
@@ -1094,11 +742,11 @@ two people in each other's path.
 
 Then conversations become memories.
 
-<br>
+<br><br>
 
 Memories become trust.
 
-<br>
+<br><br>
 
 And trust becomes something
 you quietly don't want to lose.
@@ -1106,8 +754,9 @@ you quietly don't want to lose.
 <br><br>
 
 That's why I believe
-<strong>family isn't always
-about blood.</strong>
+<strong>
+family isn't always about blood.
+</strong>
 
 <br><br>
 
@@ -1150,13 +799,12 @@ Final Blessing
 </div>
 
 </div>
-
 </section>
 
 
-<!-- =================================================
-     10 — FINAL BLESSING
-================================================= -->
+<!-- =========================
+     SLIDE 10
+========================= -->
 
 <section class="screen" id="s10">
 
@@ -1218,11 +866,11 @@ a beautiful part of your journey.
 
 Some bonds begin unexpectedly.
 
-<br>
+<br><br>
 
 Some become special quietly.
 
-<br>
+<br><br>
 
 And some are simply
 worth protecting.
@@ -1256,23 +904,23 @@ Happy Raksha Bandhan 🌸
 </p>
 
 </div>
-
 </section>
 
 
 <script>
 
-
-/* =====================================
+/* =========================
    CHANGE SLIDE
-===================================== */
+========================= */
 
 function go(n){
 
     document
     .querySelectorAll(".screen")
-    .forEach(screen=>{
+    .forEach(function(screen){
+
         screen.classList.remove("active");
+
     });
 
     document
@@ -1280,51 +928,50 @@ function go(n){
     .classList.add("active");
 
     heartClick();
-
 }
 
 
-/* =====================================
-   SINGLE HEART CLICK
-===================================== */
+/* =========================
+   ONE HEART ON CLICK
+========================= */
 
 function heartClick(){
 
-    const heart=
+    var heart =
     document.createElement("div");
 
-    heart.className=
+    heart.className =
     "click-heart";
 
-    heart.innerHTML="♥";
+    heart.innerHTML =
+    "♥";
 
     document.body.appendChild(heart);
 
-    requestAnimationFrame(()=>{
+    requestAnimationFrame(function(){
 
-        heart.style.opacity="0";
+        heart.style.opacity = "0";
 
-        heart.style.transform=
+        heart.style.transform =
         "translate(-50%,-125px) scale(1.2)";
 
     });
 
-    setTimeout(()=>{
+    setTimeout(function(){
 
         heart.remove();
 
     },1200);
-
 }
 
 
-/* =====================================
-   FIRST RANDOM SURPRISE
-===================================== */
+/* =========================
+   RANDOM SURPRISE
+========================= */
 
 function randomSurprise(){
 
-    const messages=[
+    var messages = [
 
         "Maybe you're getting closer...",
 
@@ -1340,60 +987,58 @@ function randomSurprise(){
 
     ];
 
-    const text=
-    messages[
-        Math.floor(
-            Math.random()*messages.length
-        )
-    ];
+    var random =
+    Math.floor(
+        Math.random()*messages.length
+    );
 
     document
     .getElementById("randomText")
-    .innerText=text;
+    .innerText =
+    messages[random];
 
     heartClick();
 
-    setTimeout(()=>{
+    setTimeout(function(){
 
         go(3);
 
     },1300);
-
 }
 
 
-/* =====================================
-   DATE REVEAL
-===================================== */
+/* =========================
+   DATE MYSTERY
+========================= */
 
-let dateStage=0;
+var dateStage = 0;
 
-let dateParts=[];
+var dateParts = [];
 
 
 function mysteryDate(){
 
-    const box=
+    var box =
     document.getElementById(
         "dateSecret"
     );
 
-    const title=
+    var title =
     document.getElementById(
         "dateTitle"
     );
 
-    const hint=
+    var hint =
     document.getElementById(
         "dateHint"
     );
 
-    const button=
+    var button =
     document.getElementById(
         "dateButton"
     );
 
-    const icon=
+    var icon =
     document.getElementById(
         "mysteryIcon"
     );
@@ -1401,20 +1046,21 @@ function mysteryDate(){
 
     /* FIRST CLICK */
 
-    if(dateStage===0){
+    if(dateStage === 0){
 
-        box.innerText=
+        box.innerText =
         "Maybe...";
 
-        title.innerText=
+        title.innerText =
         "A Clue Appeared";
 
-        hint.innerText=
+        hint.innerText =
         "But that isn't the answer.";
 
-        icon.innerText="🔐";
+        icon.innerText =
+        "🔐";
 
-        button.innerText=
+        button.innerText =
         "Try Again";
 
         dateStage++;
@@ -1425,31 +1071,34 @@ function mysteryDate(){
     }
 
 
-    /* RANDOM PIECES */
+    /* DATE PIECES */
 
-    if(dateParts.length<3){
+    if(dateParts.length < 3){
 
-        const pieces=[
+        var pieces = [
             "25",
             "03",
             "2026"
         ];
 
-        const remaining=
-        pieces.filter(
-            x=>!dateParts.includes(x)
-        );
+        var remaining =
+        pieces.filter(function(x){
 
-        const selected=
+            return !dateParts.includes(x);
+
+        });
+
+        var selected =
         remaining[
             Math.floor(
-                Math.random()*remaining.length
+                Math.random() *
+                remaining.length
             )
         ];
 
         dateParts.push(selected);
 
-        box.innerText=
+        box.innerText =
         selected;
 
         box.classList.remove(
@@ -1462,22 +1111,23 @@ function mysteryDate(){
             "dateFlash"
         );
 
-        title.innerText=
+        title.innerText =
         "Another Piece...";
 
-        hint.innerText=
+        hint.innerText =
         "Still not the complete answer.";
 
-        icon.innerText="🔮";
+        icon.innerText =
+        "🔮";
 
-        if(dateParts.length===3){
+        if(dateParts.length === 3){
 
-            button.innerText=
+            button.innerText =
             "Reveal The Date";
 
         }else{
 
-            button.innerText=
+            button.innerText =
             "Find Another Piece";
 
         }
@@ -1490,44 +1140,46 @@ function mysteryDate(){
     }
 
 
-    /* FINAL */
+    /* FINAL DATE */
 
-    box.innerText=
+    box.innerText =
     "25 • 03 • 2026";
 
-    title.innerText=
+    title.innerText =
     "There It Is";
 
-    hint.innerText=
+    hint.innerText =
     "25 March 2026";
 
-    icon.innerText="🌸";
+    icon.innerText =
+    "🌸";
 
-    button.innerText=
+    button.innerText =
     "See What It Means";
 
-    button.onclick=function(){
+    button.onclick =
+    function(){
 
         go(4);
 
     };
 
     heartClick();
-
 }
 
 
-/* =====================================
+/* =========================
    NAME REVEAL
-===================================== */
+========================= */
 
 function revealName(){
 
-    const box=
-    document.getElementById("name");
+    var box =
+    document.getElementById(
+        "name"
+    );
 
-    const characters=
-    [
+    var characters = [
         "?",
         "•",
         "X",
@@ -1537,44 +1189,44 @@ function revealName(){
         "♥"
     ];
 
-    let count=0;
+    var count = 0;
 
-    const timer=
-    setInterval(()=>{
+    var timer =
+    setInterval(function(){
 
-        let text="";
+        var text = "";
 
         for(
-            let i=0;
+            var i=0;
             i<Math.min(count,7);
             i++
         ){
 
-            text+=
+            text +=
             characters[
                 Math.floor(
-                    Math.random()*
+                    Math.random() *
                     characters.length
                 )
             ];
 
         }
 
-        box.innerText=
+        box.innerText =
         text || "???";
 
         count++;
 
-        if(count>15){
+        if(count > 15){
 
             clearInterval(timer);
 
-            box.innerText=
+            box.innerText =
             "MOUNIKA";
 
             heartClick();
 
-            setTimeout(()=>{
+            setTimeout(function(){
 
                 go(7);
 
@@ -1583,14 +1235,98 @@ function revealName(){
         }
 
     },130);
-
 }
 
 
-/* =====================================
-   BACKGROUND FLOATING DECOR
-===================================== */
+/* =========================
+   BACKGROUND
+========================= */
 
 function createBackground(){
 
-    const symbols=[
+    var item =
+    document.createElement("span");
+
+    var symbols = [
+        "•",
+        "·",
+        "✦"
+    ];
+
+    item.innerText =
+    symbols[
+        Math.floor(
+            Math.random() *
+            symbols.length
+        )
+    ];
+
+    item.style.left =
+    Math.random()*100+"vw";
+
+    item.style.fontSize =
+    (10+Math.random()*14)+"px";
+
+    item.style.animationDuration =
+    (8+Math.random()*5)+"s";
+
+    document
+    .getElementById("background")
+    .appendChild(item);
+
+    setTimeout(function(){
+
+        item.remove();
+
+    },13000);
+}
+
+setInterval(
+    createBackground,
+    900
+);
+
+
+/* =========================
+   SMALL DATE EFFECT
+========================= */
+
+setInterval(function(){
+
+    var screen =
+    document.getElementById("s3");
+
+    if(
+        screen.classList.contains("active") &&
+        dateStage > 0 &&
+        Math.random() > .75
+    ){
+
+        var box =
+        document.getElementById(
+            "dateSecret"
+        );
+
+        var old =
+        box.innerText;
+
+        box.style.opacity =
+        ".25";
+
+        setTimeout(function(){
+
+            box.innerText =
+            old;
+
+            box.style.opacity =
+            "1";
+
+        },180);
+    }
+
+},1000);
+
+</script>
+
+</body>
+    </html>
